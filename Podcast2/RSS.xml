@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Creating an XML tree using LINQ to XML-->
+<Root>
+  <Episodes>69</Episodes>
+  <Podcast>Fulkultur</Podcast>
+  <Episode Id="0">
+    <Name>Titel: #1 Om post-apokalypsen</Name>
+  </Episode>
+  <Episode Id="1">
+    <Name>Titel: #2 Om artificiell intelligens</Name>
+  </Episode>
+  <Episode Id="2">
+    <Name>Titel: #3 Om Stjärnornas Krig</Name>
+  </Episode>
+  <Episode Id="3">
+    <Name>Titel: #4 Om virtuell verklighet</Name>
+  </Episode>
+  <Episode Id="4">
+    <Name>Titel: #5 Om hur vi erövrade solsystemet. Och beyond!</Name>
+  </Episode>
+  <Episode Id="5">
+    <Name>Titel: #6 Om tomtar och troll</Name>
+  </Episode>
+  <Episode Id="6">
+    <Name>Titel: #7 Om när japaner tecknar film</Name>
+  </Episode>
+  <Episode Id="7">
+    <Name>Titel: #8 Om science-fiction-författarna: visionärer eller vår tids Nostradamus?</Name>
+  </Episode>
+  <Episode Id="8">
+    <Name>Titel: #9 Om världens bästa fantasy!</Name>
+  </Episode>
+  <Episode Id="9">
+    <Name>Titel: #10 Om den virtuella verklighetens intåg</Name>
+  </Episode>
+  <Episode Id="10">
+    <Name>Titel: #11 Om Marvels universum</Name>
+  </Episode>
+  <Episode Id="11">
+    <Name>Titel: #12 Om storheten med Star Trek</Name>
+  </Episode>
+  <Episode Id="12">
+    <Name>Titel: #13 Om våra älskade 80- &amp; 90-talsrullar, och deras remakes</Name>
+  </Episode>
+  <Episode Id="13">
+    <Name>Titel: #14 Om vuxna som leker med leksaker</Name>
+  </Episode>
+  <Episode Id="14">
+    <Name>Titel: #15 Om våra allra bästa sommartips</Name>
+  </Episode>
+  <Episode Id="15">
+    <Name>Titel: #16 Om Game of Thrones</Name>
+  </Episode>
+  <Episode Id="16">
+    <Name>Titel: #17 Om nya Star Trek</Name>
+  </Episode>
+  <Episode Id="17">
+    <Name>Titel: #18 Om Star Wars-spelens underbara värld</Name>
+  </Episode>
+  <Episode Id="18">
+    <Name>Titel: #19 Om tv-serierna du bara måste titta på i höst och vinter</Name>
+  </Episode>
+  <Episode Id="19">
+    <Name>Titel: #20 Om världens bästa krigsskildringar</Name>
+  </Episode>
+  <Episode Id="20">
+    <Name>Titel: #21 Om den nya rollspelvågen</Name>
+  </Episode>
+  <Episode Id="21">
+    <Name>Titel: #22 Om de underbara äventyrsspelen</Name>
+  </Episode>
+  <Episode Id="22">
+    <Name>Titel: #23 Om brädspelen</Name>
+  </Episode>
+  <Episode Id="23">
+    <Name>Titel: #24 Om skräcken, fasan och spänningen</Name>
+  </Episode>
+  <Episode Id="24">
+    <Name>Titel: #25 Om dystopier... Och Donald Trump!</Name>
+  </Episode>
+  <Episode Id="25">
+    <Name>Titel: #26 Om sökandet efter utomjordiskt liv</Name>
+  </Episode>
+  <Episode Id="26">
+    <Name>Titel: #27 Om julen på skärmen</Name>
+  </Episode>
+  <Episode Id="27">
+    <Name>Titel: #28 Om Rogue One och framtiden för Star Wars</Name>
+  </Episode>
+  <Episode Id="28">
+    <Name>Titel: #29 Om allt det bästa och nördigaste – 2017!</Name>
+  </Episode>
+  <Episode Id="29">
+    <Name>Titel: #30 Om serier – mer än bara masker och mantlar</Name>
+  </Episode>
+  <Episode Id="30">
+    <Name>Titel: #31 Om Disney</Name>
+  </Episode>
+  <Episode Id="31">
+    <Name>Titel: #32 Om fandom, kärleken och besvikelserna</Name>
+  </Episode>
+  <Episode Id="32">
+    <Name>Titel: #33 Om fulkultur för våra kids</Name>
+  </Episode>
+  <Episode Id="33">
+    <Name>Titel: #34 Om Mass Effect</Name>
+  </Episode>
+  <Episode Id="34">
+    <Name>Titel: #35 Om bestar, monster och andra vidunder</Name>
+  </Episode>
+  <Episode Id="35">
+    <Name>Titel: #36 Om doktorn och hans följeslagare</Name>
+  </Episode>
+  <Episode Id="36">
+    <Name>Titel: #37 Om Marvel på vita duken</Name>
+  </Episode>
+  <Episode Id="37">
+    <Name>Titel: #38 Om när verkligheten möter det magiska</Name>
+  </Episode>
+  <Episode Id="38">
+    <Name>Titel: #39 Om den nördiga musiken</Name>
+  </Episode>
+  <Episode Id="39">
+    <Name>Titel: #40 Om gröna muterade krigare</Name>
+  </Episode>
+  <Episode Id="40">
+    <Name>Titel: #41 Om tidsresande cybernetiska dödsänglar</Name>
+  </Episode>
+  <Episode Id="41">
+    <Name>Titel: #42 Om Liftarens guide till galaxen</Name>
+  </Episode>
+  <Episode Id="42">
+    <Name>Titel: #43 Om Zelda i våra hjärtan</Name>
+  </Episode>
+  <Episode Id="43">
+    <Name>Titel: #44 Om Judge Dredd, 2000AD och den brittiska comics-scenen</Name>
+  </Episode>
+  <Episode Id="44">
+    <Name>Titel: #45 Om Alistair MacLean – Örnnästet och så mycket mer!</Name>
+  </Episode>
+  <Episode Id="45">
+    <Name>Titel: #46 Om den rafflande tv-seriehösten</Name>
+  </Episode>
+  <Episode Id="46">
+    <Name>Titel: #47 Om megafenomenet Battlegrounds</Name>
+  </Episode>
+  <Episode Id="47">
+    <Name>Titel: #48 Om Buffy the Vampire Slayer</Name>
+  </Episode>
+  <Episode Id="48">
+    <Name>Titel: #49 Om den svenska humorn</Name>
+  </Episode>
+  <Episode Id="49">
+    <Name>Titel: #50 Om Blade Runner, gamla och nya</Name>
+  </Episode>
+  <Episode Id="50">
+    <Name>Titel: #51 Om den mästerliga Stephen King</Name>
+  </Episode>
+  <Episode Id="51">
+    <Name>Titel: #52 Om spelikonen Super Mario</Name>
+  </Episode>
+  <Episode Id="52">
+    <Name>Titel: #53 Om TV-spel på språng – maskinerna, spelen, tipsen och historiken</Name>
+  </Episode>
+  <Episode Id="53">
+    <Name>Titel: #54 Om Star Wars och The Last Jedi</Name>
+  </Episode>
+  <Episode Id="54">
+    <Name>Titel: #55 Om julkalendrar och fulkulturella nyårstraditioner</Name>
+  </Episode>
+  <Episode Id="55">
+    <Name>Titel: #56 Om Marvels mutanter, och framtiden för MCU</Name>
+  </Episode>
+  <Episode Id="56">
+    <Name>Titel: #57 Om hjärtskärande magplask och besvikelser</Name>
+  </Episode>
+  <Episode Id="57">
+    <Name>Titel: #58 Om Altered Carbon, neo-noir och den nya cyberpunk-vågen</Name>
+  </Episode>
+  <Episode Id="58">
+    <Name>Titel: #59 Om guilty pleasure och fascinationen för det usla</Name>
+  </Episode>
+  <Episode Id="59">
+    <Name>Titel: #60 Om parkförvaltningen i Pawnee, Indiana</Name>
+  </Episode>
+  <Episode Id="60">
+    <Name>Titel: #61 Om spel som berättar historier</Name>
+  </Episode>
+  <Episode Id="61">
+    <Name>Titel: #62 Om den förbjudna musiken</Name>
+  </Episode>
+  <Episode Id="62">
+    <Name>Titel: #63 Om Travelers – När Kanada gör tidsresor</Name>
+  </Episode>
+  <Episode Id="63">
+    <Name>Titel: #64: Om när bok blir film</Name>
+  </Episode>
+  <Episode Id="64">
+    <Name>Titel: #65: Om samlaren inom oss</Name>
+  </Episode>
+  <Episode Id="65">
+    <Name>Titel: #66 Om robotar i förklädnad</Name>
+  </Episode>
+  <Episode Id="66">
+    <Name>Titel: #67: Om de bästa tipsen för sommaren</Name>
+  </Episode>
+  <Episode Id="67">
+    <Name>Titel: Om Sagan om Ringen, och de andra böckerna från Tolkiens Midgård</Name>
+  </Episode>
+  <Episode Id="68">
+    <Name>Titel: Om Sagan om Ringen på film</Name>
+  </Episode>
+</Root>
