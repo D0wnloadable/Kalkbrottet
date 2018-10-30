@@ -36,7 +36,6 @@
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colFrequency = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.cbFrequency = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.lvCategory = new System.Windows.Forms.ListView();
@@ -109,16 +108,6 @@
             // 
             this.colFrequency.Text = "Frekvens";
             this.colFrequency.Width = 80;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(12, 297);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "Update List";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // cbFrequency
             // 
@@ -210,7 +199,6 @@
             this.Controls.Add(this.lvCategory);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.cbFrequency);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lvPods);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.tbUrl);
@@ -228,7 +216,6 @@
         private System.Windows.Forms.ListBox lbList;
         private System.Windows.Forms.TextBox tbUrl;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.ColumnHeader colEpisode;
         private System.Windows.Forms.ColumnHeader colName;
         private System.Windows.Forms.ColumnHeader colFrequency;

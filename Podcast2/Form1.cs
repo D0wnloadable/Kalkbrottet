@@ -16,14 +16,25 @@ namespace Podcast2
 {
     public partial class Form1 : Form
     {
-        private RssReader Reader = new RssReader();
-        private SaveFile SaveLoad = new SaveFile();
-
-
-
         public Form1()
         {
             InitializeComponent();
+        }
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            new PodcastList();
+            new PodcastEpList();
+            new CategoryList();
+
+            CreateFile.CreatePodcastList();
+            CreateFile.CreateEpisodeList();
+            CreateFile.CreateCategoryList2();
+
+            UpdatePodListView();
+            UpdateCategoryListView();
         }
 
 
@@ -39,19 +50,19 @@ namespace Podcast2
             SaveFile.SavePodcast();
             SaveFile.SaveEpisodes();
 
-            UpdateListView();
+            UpdatePodListView();
         }
 
 
 
         // Updates the list view of the Podcasts
-        private void UpdateListView()
+        private void UpdatePodListView()
         {
             lvPods.Items.Clear();
 
             List<Podcast> podList = PodcastList.GetPodList();
 
-            foreach(var pod in podList)
+            foreach (var pod in podList)
             {
                 var list = new ListViewItem(new[]
                 {
@@ -67,36 +78,58 @@ namespace Podcast2
 
 
 
-        private void Form1_Load(object sender, EventArgs e)
+        // When clicking a Podcast on the "lvPods" element, the episode list view should update
+        private void lvPods_Click(object sender, EventArgs e)
         {
-            new PodcastList();
-            new PodcastEpList();
-            new CategoryList();
+            int i = lvPods.SelectedItems[0].Index;
+            string selectedItem = lvPods.Items[i].SubItems[1].Text;
 
-            CreateFile.CreatePodcastList();
-            CreateFile.CreateEpisodeList();
-            CreateFile.CreateCategoryList2();
-
-            UpdateListView();
-            UpdateCategoryList();
+            UpdateEpisodeListView(selectedItem);
         }
 
 
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        // Updates the list view of the Episodes
+        public void UpdateEpisodeListView(string title)
         {
+            lvEpisodes.Clear();
+
+            List<PodcastEp> list = PodcastEpList.GetEpList();
+
+            foreach (var ep in list)
+            {
+                if (ep.PodTitle == title)
+                {
+                    lvEpisodes.Items.Add(ep.Title);
+                }
+            }
+
+            //List<string> list = PodcastEpList.GetEpTitle();
+
+            //lvEpisodes.Items.Clear();
+
+            //foreach(string t in list)
+            //{
+            //    lvEpisodes.Items.Add(t);
+            //}
         }
 
+
+
+        // Button to save a Category
         private void btnSaveCat_Click(object sender, EventArgs e)
         {
             string cat = tbNewCat.Text;
 
             CreateCategoryList.AddCatList(cat);
 
-            UpdateCategoryList();
+            UpdateCategoryListView();
         }
 
-        public void UpdateCategoryList()
+
+
+        // Updates the list view of the Categories
+        public void UpdateCategoryListView()
         {
             lvCategory.Items.Clear();
 
@@ -115,6 +148,9 @@ namespace Podcast2
             //DeleteCategory();
         }
 
+
+
+        // Deletes a Category
         public void DeleteCategory()
         {
             string item = lvCategory.SelectedItems[0].Text;
@@ -125,40 +161,8 @@ namespace Podcast2
                 CategoryList.DeleteCat(item);
 
                 // Updated the list
-                UpdateCategoryList();
+                UpdateCategoryListView();
             }
-        }
-
-        private void lvPods_Click(object sender, EventArgs e)
-        {
-            int i = lvPods.SelectedItems[0].Index;
-            string selectedItem = lvPods.Items[i].SubItems[1].Text;
-
-            UpdateEpisodeListView(selectedItem);
-        }
-
-        public void UpdateEpisodeListView(string title)
-        {
-            lvEpisodes.Clear();
-
-            List<PodcastEp> list = PodcastEpList.GetEpList();
-            
-            foreach (var ep in list)
-            {
-                if (ep.PodTitle == title)
-                {
-                    lvEpisodes.Items.Add(ep.Title);
-                }
-            }
-
-            //List<string> list = PodcastEpList.GetEpTitle();
-
-            //lvEpisodes.Items.Clear();
-
-            //foreach(string t in list)
-            //{
-            //    lvEpisodes.Items.Add(t);
-            //}
         }
     }
 }
