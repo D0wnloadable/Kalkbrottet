@@ -8,6 +8,7 @@ namespace Podcast2.Business
 {
     public class PodcastEp
     {
+        public string PodTitle { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
 
@@ -19,8 +20,9 @@ namespace Podcast2.Business
 
 
 
-        public PodcastEp(string tit, string desc)
+        public PodcastEp(string podTit,string tit, string desc)
         {
+            PodTitle = podTit;
             Title = tit;
             Description = desc;
         }

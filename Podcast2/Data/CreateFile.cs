@@ -13,28 +13,67 @@ namespace Podcast2.Data
 {
     public class CreateFile
     {
+        public static void CreateCategoryList()
+        {
+            if (File.Exists("Category.txt"))
+            {
+                var doc = XDocument.Load("Category.txt");
+
+                List<Category> cat =
+                    doc.Root
+                    .Elements("Category")
+                    .Select(c => new Category
+                    {
+                        Name = (string)c.Element("Cat")
+                    }).ToList();
+            }
+        }
+
+
+
+        public static void CreateCategoryList2()
+        {
+            if (File.Exists("Category.txt"))
+            {
+                XDocument doc = XDocument.Load("Category.txt");
+                doc.Descendants("Category").Select(p => new
+                {
+                    Name = p.Element("Name").Value
+
+                }).ToList().ForEach(p =>
+                {
+                    Category cat = new Category(
+                        p.Name
+                        );
+
+                    CategoryList.AddCat(cat);
+                });
+            }
+        }
+
+
+
         public static void CreatePodcastList()
         {
-            if (File.Exists("Podcasts.txt"))
+            if (File.Exists("Podcast.txt"))
             {
                 XDocument xdoc = XDocument.Load("Podcast.txt");
                 xdoc.Descendants("Podcast").Select(p => new
                 {
-                    podcastTitel = p.Element("podcastTitel").Value,
-                    uppdateringsFrekvens = Convert.ToInt32(p.Element("uppdateringsFrekvens").Value),
-                    kategori = p.Element("kategori").Value,
-                    antalAvsnitt = Convert.ToInt32(p.Element("antalAvsnitt").Value)
+                    Episodes = Convert.ToInt32(p.Element("Episodes").Value),
+                    Title = p.Element("Title").Value,
+                    Category = p.Element("Category").Value,
+                    Frequency = Convert.ToInt32(p.Element("Frequency").Value)
 
                 }).ToList().ForEach(p =>
                 {
                     Podcast pod = new Podcast(
-                        p.antalAvsnitt,
-                        p.podcastTitel,
-                        p.kategori,
-                        p.uppdateringsFrekvens
+                        p.Episodes,
+                        p.Title,
+                        p.Category,
+                        p.Frequency
                         );
                         
-
                     PodcastList.AddPodcast(pod);
                 });
             }
@@ -42,17 +81,19 @@ namespace Podcast2.Data
 
         public static void CreateEpisodeList()
         {
-            if (File.Exists("avsnitt.txt"))
+            if (File.Exists("Episodes.txt"))
             {
-                XDocument xdoc = XDocument.Load("PodcastEp.txt");
-                xdoc.Descendants("Avsnitt").Select(p => new
+                XDocument xdoc = XDocument.Load("Episodes.txt");
+                xdoc.Descendants("PodcastEp").Select(p => new
                 {
-                    title = p.Element("avsnittTitel").Value,
-                    desc = p.Element("beskrivning").Value,
+                    podTitle = p.Element("PodTitle").Value,
+                    title = p.Element("Title").Value,
+                    desc = p.Element("Description").Value,
 
                 }).ToList().ForEach(p =>
                 {
                     PodcastEp ep = new PodcastEp(
+                        p.podTitle,
                         p.title,
                         p.desc);
                     PodcastEpList.AddEpisode(ep);

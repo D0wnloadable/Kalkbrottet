@@ -47,12 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Category.cs" />
+    <Compile Include="Business\CategoryList.cs" />
+    <Compile Include="Business\CreateCategoryList.cs" />
     <Compile Include="Business\Podcast.cs" />
     <Compile Include="Business\PodcastEp.cs" />
     <Compile Include="Business\PodcastEpList.cs" />
     <Compile Include="Business\PodcastList.cs" />
     <Compile Include="Business\RssReaderBusi.cs" />
-    <Compile Include="Business\Validate.cs" />
+    <Compile Include="Business\Validator.cs" />
+    <Compile Include="Data\CreateCategoriesFile.cs" />
     <Compile Include="Data\CreateFile.cs" />
     <Compile Include="Data\RssReader.cs" />
     <Compile Include="Data\SaveFile.cs" />

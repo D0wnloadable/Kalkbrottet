@@ -8,8 +8,24 @@ using System.Xml;
 
 namespace Podcast2.Business
 {
-    class Validate
+    class Validator
     {
+        // Checks if string is Null or empty
+        public static bool StringNotEmpty(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+
+        // Checks if Url is valid
         public static bool CheckUrl(string url)
         {
             try

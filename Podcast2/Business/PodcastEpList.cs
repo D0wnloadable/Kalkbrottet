@@ -19,18 +19,30 @@ namespace Podcast2.Business
 
 
 
-        public static void AddEpisode(PodcastEp episode)
+        public static void AddEpisode(PodcastEp ep)
         {
-            EpisodeList.Add(episode);
+            EpisodeList.Add(ep);
         }
 
 
 
-        public static List<PodcastEp> GetList()
+        public static List<PodcastEp> GetEpList()
         {
-            EpisodeList.Reverse();
-
             return EpisodeList;
+        }
+
+
+
+        public static List<string> GetEpTitle()
+        {
+            List<string> list = new List<string>();
+
+            foreach (PodcastEp title in EpisodeList)
+            {
+                list.Add(title.Title);
+            }
+
+            return list;
         }
     }
 }

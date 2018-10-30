@@ -26,7 +26,10 @@ namespace Podcast2.Business
 
 
 
-        public static List<Podcast> GetList() {
+        public static List<Podcast> GetPodList()
+        {
+            PodList.Reverse();
+
             return PodList;
         }
     }

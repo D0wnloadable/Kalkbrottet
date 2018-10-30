@@ -32,7 +32,7 @@ namespace Podcast2.Data
                 string title = item.Title.Text;
                 string description = item.Summary.Text;
 
-                PodcastEp episode = new PodcastEp(title, description);
+                PodcastEp episode = new PodcastEp(podTitle, title, description);
                 PodcastEpList.AddEpisode(episode);
             }
         }

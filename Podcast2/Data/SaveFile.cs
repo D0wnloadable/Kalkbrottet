@@ -16,7 +16,7 @@ namespace Podcast2.Data
         {
             Stream stream = File.OpenWrite(Environment.CurrentDirectory + "\\Podcast.txt");
             XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
-            serializer.Serialize(stream, PodcastList.GetList());
+            serializer.Serialize(stream, PodcastList.GetPodList());
             stream.Close();
         }
         
@@ -24,7 +24,15 @@ namespace Podcast2.Data
         {
             Stream stream = File.OpenWrite(Environment.CurrentDirectory + "\\Episodes.txt");
             XmlSerializer serializer = new XmlSerializer(typeof(List<PodcastEp>));
-            serializer.Serialize(stream, PodcastEpList.GetList());
+            serializer.Serialize(stream, PodcastEpList.GetEpList());
+            stream.Close();
+        }
+
+        public static void SaveCategory()
+        {
+            Stream stream = File.OpenWrite(Environment.CurrentDirectory + "\\Category.txt");
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Category>));
+            serializer.Serialize(stream, CategoryList.GetCatList());
             stream.Close();
         }
     }

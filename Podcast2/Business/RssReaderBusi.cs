@@ -11,7 +11,7 @@ namespace Podcast2.Business
     {
         public static void AddPodcast(string url, string cat, int freq)
         {
-            if (Validate.CheckUrl(url))
+            if (Validator.CheckUrl(url))
             {
                 RssReader.RssFeed(url, cat, freq);
             }
