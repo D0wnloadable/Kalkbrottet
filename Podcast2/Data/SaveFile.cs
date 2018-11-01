@@ -30,10 +30,23 @@ namespace Podcast2.Data
 
         public static void SaveCategory()
         {
+            //Creating the file "Category.txt"
             Stream stream = File.OpenWrite(Environment.CurrentDirectory + "\\Category.txt");
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Category>));
-            serializer.Serialize(stream, CategoryList.GetCatList());
             stream.Close();
+
+            // Writing to the text file
+            StreamWriter sw = new StreamWriter(Directory.GetCurrentDirectory() + "\\Category.txt");
+
+            List<string> catList = CategoryList.GetCatList();
+
+            foreach(string cat in catList)
+            {
+                sw.WriteLine(cat);
+            }
+            sw.Close();
+            //XmlSerializer serializer = new XmlSerializer(typeof(List<Category>));
+            //serializer.Serialize(stream, CategoryList.GetCatList());
+            //stream.Close();
         }
     }
 }

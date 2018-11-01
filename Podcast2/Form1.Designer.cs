@@ -44,6 +44,7 @@
             this.btnSaveCat = new System.Windows.Forms.Button();
             this.btnDeleteCat = new System.Windows.Forms.Button();
             this.lvEpisodes = new System.Windows.Forms.ListView();
+            this.lvEpDesc = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // lbList
@@ -186,11 +187,20 @@
             this.lvEpisodes.UseCompatibleStateImageBehavior = false;
             this.lvEpisodes.View = System.Windows.Forms.View.List;
             // 
+            // lvEpDesc
+            // 
+            this.lvEpDesc.Location = new System.Drawing.Point(464, 327);
+            this.lvEpDesc.Name = "lvEpDesc";
+            this.lvEpDesc.Size = new System.Drawing.Size(329, 223);
+            this.lvEpDesc.TabIndex = 14;
+            this.lvEpDesc.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 803);
+            this.Controls.Add(this.lvEpDesc);
             this.Controls.Add(this.lvEpisodes);
             this.Controls.Add(this.btnDeleteCat);
             this.Controls.Add(this.btnSaveCat);
@@ -229,6 +239,7 @@
         private System.Windows.Forms.Button btnSaveCat;
         private System.Windows.Forms.Button btnDeleteCat;
         private System.Windows.Forms.ListView lvEpisodes;
+        private System.Windows.Forms.ListView lvEpDesc;
     }
 }
 

@@ -31,7 +31,7 @@ namespace Podcast2
 
             CreateFile.CreatePodcastList();
             CreateFile.CreateEpisodeList();
-            CreateFile.CreateCategoryList2();
+            //CreateFile.CreateCategoryList2();
 
             UpdatePodListView();
             UpdateCategoryListView();
@@ -121,9 +121,29 @@ namespace Podcast2
         {
             string cat = tbNewCat.Text;
 
-            CreateCategoryList.AddCatList(cat);
+            if (Validator.StringNotEmpty(cat))
+            {
+                CreateCategoryList.AddCatList(cat);
+                UpdateCategoryListView();
+            }
+            
+        }
 
-            UpdateCategoryListView();
+
+
+        // Button to delete a Category
+        private void btnDeleteCat_Click(object sender, EventArgs e)
+        {
+            // var item = lvCategory.SelectedItems[0].Text; if(Validator.checkSomething(item))
+            string item = lvCategory.SelectedItems[0].Text;
+
+            if (Validator.StringNotEmpty(item))
+            {
+                CategoryList.DeleteCat(item);
+
+                // Updated the list
+                UpdateCategoryListView();
+            }
         }
 
 
@@ -133,36 +153,14 @@ namespace Podcast2
         {
             lvCategory.Items.Clear();
 
-            List<Category> catList = CategoryList.GetCatList();
+            List<string> catList = CategoryList.GetCatList();
 
-            foreach(var category in catList)
+            foreach (string cat in catList)
             {
-                lvCategory.Items.Add(category.Name);
+                lvCategory.Items.Add(cat);
             }
-
+            
             //lvCategory.Items.Add(cat);
-        }
-
-        private void btnDeleteCat_Click(object sender, EventArgs e)
-        {
-            //DeleteCategory();
-        }
-
-
-
-        // Deletes a Category
-        public void DeleteCategory()
-        {
-            string item = lvCategory.SelectedItems[0].Text;
-            // Gets the text from the selected item
-            if (Validator.StringNotEmpty(item))
-            {
-                // Runs the DeleteCat method
-                CategoryList.DeleteCat(item);
-
-                // Updated the list
-                UpdateCategoryListView();
-            }
         }
     }
 }

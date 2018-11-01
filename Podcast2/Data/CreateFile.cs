@@ -46,7 +46,7 @@ namespace Podcast2.Data
                         p.Name
                         );
 
-                    CategoryList.AddCat(cat);
+                    //CategoryList.AddCat(cat);
                 });
             }
         }

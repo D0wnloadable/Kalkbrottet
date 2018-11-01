@@ -11,9 +11,9 @@ namespace Podcast2.Business
     {
         public static void AddCatList(string cat)
         {
-            Category catObj = new Category(cat);
+            string category = cat;
 
-            CategoryList.AddCat(catObj);
+            CategoryList.AddCat(category);
 
             SaveFile.SaveCategory();
         }
