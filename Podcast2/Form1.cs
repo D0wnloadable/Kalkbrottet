@@ -31,7 +31,7 @@ namespace Podcast2
 
             CreateFile.CreatePodcastList();
             CreateFile.CreateEpisodeList();
-            CreateFile.CreateCategoryList2();
+            CreateFile.CreateCategoryList();
 
             UpdatePodListView();
             UpdateCategoryListView();

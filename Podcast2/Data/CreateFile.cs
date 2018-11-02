@@ -17,24 +17,6 @@ namespace Podcast2.Data
         {
             if (File.Exists("Category.txt"))
             {
-                var doc = XDocument.Load("Category.txt");
-
-                List<Category> cat =
-                    doc.Root
-                    .Elements("Category")
-                    .Select(c => new Category
-                    {
-                        Name = (string)c.Element("Cat")
-                    }).ToList();
-            }
-        }
-
-
-
-        public static void CreateCategoryList2()
-        {
-            if (File.Exists("Category.txt"))
-            {
                 var catFile = File.ReadAllLines("Category.txt");
 
                 foreach (string cat in catFile)
