@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace Podcast2.Business
@@ -35,6 +36,24 @@ namespace Podcast2.Business
             }
             catch
             {
+                return false;
+            }
+        }
+
+
+
+        public static bool CatExist(string cat)
+        {
+            List<string> CatList = CategoryList.GetCatList();
+
+            if (!CatList.Contains(cat))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Kategorin finns redan.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return false;
             }
         }

@@ -31,7 +31,7 @@ namespace Podcast2
 
             CreateFile.CreatePodcastList();
             CreateFile.CreateEpisodeList();
-            //CreateFile.CreateCategoryList2();
+            CreateFile.CreateCategoryList2();
 
             UpdatePodListView();
             UpdateCategoryListView();
@@ -123,8 +123,11 @@ namespace Podcast2
 
             if (Validator.StringNotEmpty(cat))
             {
-                CreateCategoryList.AddCatList(cat);
-                UpdateCategoryListView();
+                if (Validator.CatExist(cat))
+                {
+                    CreateCategoryList.AddCatList(cat);
+                    UpdateCategoryListView();
+                }
             }
             
         }

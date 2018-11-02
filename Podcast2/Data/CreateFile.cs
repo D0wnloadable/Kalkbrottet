@@ -35,19 +35,12 @@ namespace Podcast2.Data
         {
             if (File.Exists("Category.txt"))
             {
-                XDocument doc = XDocument.Load("Category.txt");
-                doc.Descendants("Category").Select(p => new
-                {
-                    Name = p.Element("Name").Value
+                var catFile = File.ReadAllLines("Category.txt");
 
-                }).ToList().ForEach(p =>
+                foreach (string cat in catFile)
                 {
-                    Category cat = new Category(
-                        p.Name
-                        );
-
-                    //CategoryList.AddCat(cat);
-                });
+                    CategoryList.AddCat(cat);
+                }
             }
         }
 
