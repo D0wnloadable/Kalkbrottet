@@ -9,14 +9,12 @@ namespace Podcast2.Business
 {
     class CategoryList
     {
-        public static List<Category> CatListt { get; set; }
         public static List<string> CatList { get; set; }
 
 
 
         public CategoryList()
         {
-            CatListt = new List<Category>();
             CatList = new List<string>();
         }
 
@@ -47,9 +45,6 @@ namespace Podcast2.Business
                     SaveFile.SaveCategory();
                 }
             }
-            //CatList.RemoveAll(i => i.Name == c);
-
-            //SaveFile.SaveCategory();
         }
     }
 }

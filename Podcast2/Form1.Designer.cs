@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbList = new System.Windows.Forms.ListBox();
             this.tbUrl = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lvPods = new System.Windows.Forms.ListView();
@@ -44,16 +43,11 @@
             this.btnSaveCat = new System.Windows.Forms.Button();
             this.btnDeleteCat = new System.Windows.Forms.Button();
             this.lvEpisodes = new System.Windows.Forms.ListView();
-            this.lvEpDesc = new System.Windows.Forms.ListView();
+            this.colTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvDescription = new System.Windows.Forms.ListView();
+            this.btnDeletePod = new System.Windows.Forms.Button();
+            this.tbEpDescription = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // lbList
-            // 
-            this.lbList.FormattingEnabled = true;
-            this.lbList.Location = new System.Drawing.Point(12, 657);
-            this.lbList.Name = "lbList";
-            this.lbList.Size = new System.Drawing.Size(716, 134);
-            this.lbList.TabIndex = 0;
             // 
             // tbUrl
             // 
@@ -112,6 +106,7 @@
             // 
             // cbFrequency
             // 
+            this.cbFrequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFrequency.FormattingEnabled = true;
             this.cbFrequency.Items.AddRange(new object[] {
             "5:e Minut",
@@ -123,16 +118,15 @@
             this.cbFrequency.Name = "cbFrequency";
             this.cbFrequency.Size = new System.Drawing.Size(132, 21);
             this.cbFrequency.TabIndex = 6;
-            this.cbFrequency.Text = "Uppdateringsfrekvens";
             // 
             // cbCategory
             // 
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(319, 241);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(113, 21);
             this.cbCategory.TabIndex = 7;
-            this.cbCategory.Text = "Kategori 1";
             // 
             // lvCategory
             // 
@@ -180,27 +174,59 @@
             // 
             // lvEpisodes
             // 
+            this.lvEpisodes.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvEpisodes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colTitle});
+            this.lvEpisodes.FullRowSelect = true;
             this.lvEpisodes.Location = new System.Drawing.Point(12, 327);
             this.lvEpisodes.Name = "lvEpisodes";
             this.lvEpisodes.Size = new System.Drawing.Size(420, 223);
             this.lvEpisodes.TabIndex = 13;
             this.lvEpisodes.UseCompatibleStateImageBehavior = false;
-            this.lvEpisodes.View = System.Windows.Forms.View.List;
+            this.lvEpisodes.View = System.Windows.Forms.View.Details;
+            this.lvEpisodes.Click += new System.EventHandler(this.lvEpisodes_Click);
             // 
-            // lvEpDesc
+            // colTitle
             // 
-            this.lvEpDesc.Location = new System.Drawing.Point(464, 327);
-            this.lvEpDesc.Name = "lvEpDesc";
-            this.lvEpDesc.Size = new System.Drawing.Size(329, 223);
-            this.lvEpDesc.TabIndex = 14;
-            this.lvEpDesc.UseCompatibleStateImageBehavior = false;
+            this.colTitle.Text = "Avsnitt";
+            this.colTitle.Width = 416;
+            // 
+            // lvDescription
+            // 
+            this.lvDescription.Location = new System.Drawing.Point(12, 568);
+            this.lvDescription.Name = "lvDescription";
+            this.lvDescription.Size = new System.Drawing.Size(329, 223);
+            this.lvDescription.TabIndex = 14;
+            this.lvDescription.UseCompatibleStateImageBehavior = false;
+            this.lvDescription.View = System.Windows.Forms.View.List;
+            // 
+            // btnDeletePod
+            // 
+            this.btnDeletePod.Location = new System.Drawing.Point(181, 268);
+            this.btnDeletePod.Name = "btnDeletePod";
+            this.btnDeletePod.Size = new System.Drawing.Size(132, 23);
+            this.btnDeletePod.TabIndex = 15;
+            this.btnDeletePod.Text = "Radera";
+            this.btnDeletePod.UseVisualStyleBackColor = true;
+            this.btnDeletePod.Click += new System.EventHandler(this.btnDeletePod_Click);
+            // 
+            // tbEpDescription
+            // 
+            this.tbEpDescription.Location = new System.Drawing.Point(464, 327);
+            this.tbEpDescription.Multiline = true;
+            this.tbEpDescription.Name = "tbEpDescription";
+            this.tbEpDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbEpDescription.Size = new System.Drawing.Size(329, 223);
+            this.tbEpDescription.TabIndex = 17;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 803);
-            this.Controls.Add(this.lvEpDesc);
+            this.Controls.Add(this.tbEpDescription);
+            this.Controls.Add(this.btnDeletePod);
+            this.Controls.Add(this.lvDescription);
             this.Controls.Add(this.lvEpisodes);
             this.Controls.Add(this.btnDeleteCat);
             this.Controls.Add(this.btnSaveCat);
@@ -212,9 +238,8 @@
             this.Controls.Add(this.lvPods);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.tbUrl);
-            this.Controls.Add(this.lbList);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Podcast Application";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -222,8 +247,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lbList;
         private System.Windows.Forms.TextBox tbUrl;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ColumnHeader colEpisode;
@@ -239,7 +262,10 @@
         private System.Windows.Forms.Button btnSaveCat;
         private System.Windows.Forms.Button btnDeleteCat;
         private System.Windows.Forms.ListView lvEpisodes;
-        private System.Windows.Forms.ListView lvEpDesc;
+        private System.Windows.Forms.ListView lvDescription;
+        private System.Windows.Forms.Button btnDeletePod;
+        private System.Windows.Forms.ColumnHeader colTitle;
+        private System.Windows.Forms.TextBox tbEpDescription;
     }
 }
 

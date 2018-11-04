@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\Category.cs" />
     <Compile Include="Business\CategoryList.cs" />
     <Compile Include="Business\CreateCategoryList.cs" />
     <Compile Include="Business\Podcast.cs" />

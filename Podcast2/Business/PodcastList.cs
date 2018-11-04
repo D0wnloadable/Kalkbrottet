@@ -32,5 +32,18 @@ namespace Podcast2.Business
 
             return PodList;
         }
+
+
+
+        public static void DeletePod(string title)
+        {
+            for (int i = 0; i < PodList.Count(); i++)
+            {
+                if (PodList.ElementAt(i).Title == title)
+                {
+                    PodList.RemoveAt(i);
+                }
+            }
+        }
     }
 }

@@ -36,6 +36,8 @@ namespace Podcast2.Business
             }
             catch
             {
+                MessageBox.Show("Det gick inte att hitta podden!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return false;
             }
         }

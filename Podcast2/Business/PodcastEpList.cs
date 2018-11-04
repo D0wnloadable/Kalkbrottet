@@ -44,5 +44,12 @@ namespace Podcast2.Business
 
             return list;
         }
+
+
+
+        public static void DeleteEpisodes(string title)
+        {
+            EpisodeList.RemoveAll(e => e.PodTitle.Equals(title));
+        }
     }
 }
