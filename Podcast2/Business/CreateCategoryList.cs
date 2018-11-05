@@ -15,7 +15,7 @@ namespace Podcast2.Business
 
             CategoryList.AddCat(category);
 
-            SaveFile.SaveCategory();
+            CreateFile.CreateCategoryFile();
         }
     }
 }

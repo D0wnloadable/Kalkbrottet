@@ -109,11 +109,10 @@
             this.cbFrequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFrequency.FormattingEnabled = true;
             this.cbFrequency.Items.AddRange(new object[] {
-            "5:e Minut",
-            "10:e Minut",
-            "15:e Minut",
-            "30:e Minut",
-            "60:e Minut"});
+            "5",
+            "15",
+            "30",
+            "60"});
             this.cbFrequency.Location = new System.Drawing.Point(181, 241);
             this.cbFrequency.Name = "cbFrequency";
             this.cbFrequency.Size = new System.Drawing.Size(132, 21);
@@ -253,7 +252,6 @@
         private System.Windows.Forms.ColumnHeader colName;
         private System.Windows.Forms.ColumnHeader colFrequency;
         private System.Windows.Forms.ColumnHeader colCategory;
-        private System.Windows.Forms.ComboBox cbFrequency;
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.ListView lvPods;
         private System.Windows.Forms.ListView lvCategory;
@@ -266,6 +264,7 @@
         private System.Windows.Forms.Button btnDeletePod;
         private System.Windows.Forms.ColumnHeader colTitle;
         private System.Windows.Forms.TextBox tbEpDescription;
+        public System.Windows.Forms.ComboBox cbFrequency;
     }
 }
 

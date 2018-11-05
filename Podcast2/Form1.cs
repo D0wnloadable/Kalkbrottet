@@ -30,9 +30,9 @@ namespace Podcast2
             new PodcastEpList();
             new CategoryList();
 
-            CreateFile.CreatePodcastList();
-            CreateFile.CreateEpisodeList();
-            CreateFile.CreateCategoryList();
+            GetFileData.GetPodcastList();
+            GetFileData.GetEpisodeList();
+            GetFileData.GetCategoryList();
 
             UpdatePodListView();
             UpdateCategoryListView();
@@ -43,15 +43,20 @@ namespace Podcast2
         // Button to add a new Podcast
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var Url = tbUrl.Text;
-            var Category = cbCategory.Text;
-            int Frequency = cbFrequency.SelectedIndex;
+            string url = tbUrl.Text;
+            string category = cbCategory.Text;
+            var stringFrequency = cbFrequency.SelectedItem;
 
-            RssReaderBusi.AddPodcast(Url, Category, Frequency);
-            SaveFile.SavePodcast();
-            SaveFile.SaveEpisodes();
+            if (Validator.StringNotEmpty(category) && Validator.ParseFrequency(stringFrequency))
+            {
+                int frequency = Int32.Parse(stringFrequency.ToString());
 
-            UpdatePodListView();
+                RssReaderBusi.AddPodcast(url, category, frequency);
+                CreateFile.CreatePodcastFile();
+                CreateFile.CreateEpisodeFile();
+
+                UpdatePodListView();
+            }
         }
 
 
@@ -183,14 +188,21 @@ namespace Podcast2
         private void btnDeleteCat_Click(object sender, EventArgs e)
         {
             // var item = lvCategory.SelectedItems[0].Text; if(Validator.checkSomething(item))
-            string item = lvCategory.SelectedItems[0].Text;
-
-            if (Validator.StringNotEmpty(item))
+            try
             {
-                CategoryList.DeleteCat(item);
+                var item = lvCategory.SelectedItems[0].Text;
 
-                // Updated the list
-                UpdateCategoryListView();
+                if (Validator.StringNotEmpty(item))
+                {
+                    CategoryList.DeleteCat(item);
+
+                    // Updated the list
+                    UpdateCategoryListView();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ingen kategori är vald.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

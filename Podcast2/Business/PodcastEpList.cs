@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Podcast2.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,6 +51,8 @@ namespace Podcast2.Business
         public static void DeleteEpisodes(string title)
         {
             EpisodeList.RemoveAll(e => e.PodTitle.Equals(title));
+
+            CreateFile.CreateEpisodeFile();
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Podcast2.Business
                 {
                     CatList.RemoveAt(i);
 
-                    SaveFile.SaveCategory();
+                    CreateFile.CreateCategoryFile();
                 }
             }
         }

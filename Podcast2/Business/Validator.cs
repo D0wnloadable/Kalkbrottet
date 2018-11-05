@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using Podcast2;
 
 namespace Podcast2.Business
 {
@@ -16,6 +17,8 @@ namespace Podcast2.Business
         {
             if (string.IsNullOrEmpty(text))
             {
+                MessageBox.Show("Ett eller fler fält är tomma.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return false;
             }
             else
@@ -36,7 +39,7 @@ namespace Podcast2.Business
             }
             catch
             {
-                MessageBox.Show("Det gick inte att hitta podden!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Det gick inte att hitta podden.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
             }
@@ -55,6 +58,24 @@ namespace Podcast2.Business
             else
             {
                 MessageBox.Show("Kategorin finns redan.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+
+
+        public static bool ParseFrequency(object freq)
+        {
+            try
+            {
+                int intFreq = Int32.Parse(freq.ToString());
+
+                return true;
+            }
+            catch
+            {
+                MessageBox.Show("Ingen uppdateringsfrekvens är vald.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
             }

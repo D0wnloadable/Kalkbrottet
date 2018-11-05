@@ -23,7 +23,7 @@ namespace Podcast2.Data
             string podTitle = feed.Title.Text;
             int nrOfEp = feed.Items.Count();
 
-            Podcast podcast = new Podcast(nrOfEp, podTitle, cat, freq);
+            Podcast podcast = new Podcast(url, nrOfEp, podTitle, cat, freq);
             PodcastList.AddPodcast(podcast);
 
             // Creating the Episodes objects and adding them to PodcastEpList
@@ -34,6 +34,23 @@ namespace Podcast2.Data
 
                 PodcastEp episode = new PodcastEp(podTitle, title, description);
                 PodcastEpList.AddEpisode(episode);
+            }
+
+            TheTimer.SetTimer(url, podTitle, cat, freq);
+        }
+
+
+
+        public static async Task<int> GetNumberOfEpisodes(string url)
+        {
+            using (XmlReader reader = XmlReader.Create(url))
+            {
+                SyndicationFeed feed = SyndicationFeed.Load(reader);
+                reader.Close();
+
+                int nrOfEp = feed.Items.Count();
+
+                return nrOfEp;
             }
         }
     }

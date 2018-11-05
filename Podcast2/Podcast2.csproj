@@ -55,10 +55,10 @@
     <Compile Include="Business\PodcastList.cs" />
     <Compile Include="Business\RssReaderBusi.cs" />
     <Compile Include="Business\Validator.cs" />
-    <Compile Include="Data\CreateCategoriesFile.cs" />
-    <Compile Include="Data\CreateFile.cs" />
+    <Compile Include="Data\GetFileData.cs" />
     <Compile Include="Data\RssReader.cs" />
-    <Compile Include="Data\SaveFile.cs" />
+    <Compile Include="Data\CreateFile.cs" />
+    <Compile Include="Data\TheTimer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

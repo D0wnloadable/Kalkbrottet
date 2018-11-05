@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Podcast2.Data;
 
 namespace Podcast2.Business
 {
@@ -44,6 +45,8 @@ namespace Podcast2.Business
                     PodList.RemoveAt(i);
                 }
             }
+
+            CreateFile.CreatePodcastFile();
         }
     }
 }
