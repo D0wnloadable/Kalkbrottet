@@ -49,19 +49,21 @@
             this.tbEpDescription = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
             this.btnUpdatePod = new System.Windows.Forms.Button();
+            this.lblUrl = new System.Windows.Forms.Label();
+            this.lblFrequency = new System.Windows.Forms.Label();
+            this.lblCategory = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbUrl
             // 
-            this.tbUrl.Location = new System.Drawing.Point(12, 241);
+            this.tbUrl.Location = new System.Drawing.Point(12, 270);
             this.tbUrl.Name = "tbUrl";
             this.tbUrl.Size = new System.Drawing.Size(163, 20);
             this.tbUrl.TabIndex = 1;
-            this.tbUrl.Text = "URL";
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 268);
+            this.btnAdd.Location = new System.Drawing.Point(12, 296);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(163, 23);
             this.btnAdd.TabIndex = 2;
@@ -115,7 +117,7 @@
             "15",
             "30",
             "60"});
-            this.cbFrequency.Location = new System.Drawing.Point(181, 241);
+            this.cbFrequency.Location = new System.Drawing.Point(181, 270);
             this.cbFrequency.Name = "cbFrequency";
             this.cbFrequency.Size = new System.Drawing.Size(122, 21);
             this.cbFrequency.TabIndex = 6;
@@ -124,7 +126,7 @@
             // 
             this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(309, 241);
+            this.cbCategory.Location = new System.Drawing.Point(309, 270);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(123, 21);
             this.cbCategory.TabIndex = 7;
@@ -187,9 +189,9 @@
             this.lvEpisodes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colTitle});
             this.lvEpisodes.FullRowSelect = true;
-            this.lvEpisodes.Location = new System.Drawing.Point(12, 327);
+            this.lvEpisodes.Location = new System.Drawing.Point(12, 343);
             this.lvEpisodes.Name = "lvEpisodes";
-            this.lvEpisodes.Size = new System.Drawing.Size(420, 223);
+            this.lvEpisodes.Size = new System.Drawing.Size(420, 207);
             this.lvEpisodes.TabIndex = 13;
             this.lvEpisodes.UseCompatibleStateImageBehavior = false;
             this.lvEpisodes.View = System.Windows.Forms.View.Details;
@@ -202,7 +204,7 @@
             // 
             // btnDeletePod
             // 
-            this.btnDeletePod.Location = new System.Drawing.Point(181, 268);
+            this.btnDeletePod.Location = new System.Drawing.Point(181, 296);
             this.btnDeletePod.Name = "btnDeletePod";
             this.btnDeletePod.Size = new System.Drawing.Size(122, 23);
             this.btnDeletePod.TabIndex = 15;
@@ -231,7 +233,7 @@
             // 
             // btnUpdatePod
             // 
-            this.btnUpdatePod.Location = new System.Drawing.Point(309, 268);
+            this.btnUpdatePod.Location = new System.Drawing.Point(309, 296);
             this.btnUpdatePod.Name = "btnUpdatePod";
             this.btnUpdatePod.Size = new System.Drawing.Size(123, 23);
             this.btnUpdatePod.TabIndex = 19;
@@ -239,11 +241,41 @@
             this.btnUpdatePod.UseVisualStyleBackColor = true;
             this.btnUpdatePod.Click += new System.EventHandler(this.btnUpdatePod_Click);
             // 
+            // lblUrl
+            // 
+            this.lblUrl.AutoSize = true;
+            this.lblUrl.Location = new System.Drawing.Point(12, 244);
+            this.lblUrl.Name = "lblUrl";
+            this.lblUrl.Size = new System.Drawing.Size(70, 13);
+            this.lblUrl.TabIndex = 20;
+            this.lblUrl.Text = "Adress (URL)";
+            // 
+            // lblFrequency
+            // 
+            this.lblFrequency.AutoSize = true;
+            this.lblFrequency.Location = new System.Drawing.Point(178, 244);
+            this.lblFrequency.Name = "lblFrequency";
+            this.lblFrequency.Size = new System.Drawing.Size(106, 13);
+            this.lblFrequency.TabIndex = 21;
+            this.lblFrequency.Text = "Uppdateringfrekvens";
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(306, 244);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(46, 13);
+            this.lblCategory.TabIndex = 22;
+            this.lblCategory.Text = "Kategori";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 562);
+            this.Controls.Add(this.lblCategory);
+            this.Controls.Add(this.lblFrequency);
+            this.Controls.Add(this.lblUrl);
             this.Controls.Add(this.btnUpdatePod);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.tbEpDescription);
@@ -289,6 +321,9 @@
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.ColumnHeader colCategories;
         private System.Windows.Forms.Button btnUpdatePod;
+        private System.Windows.Forms.Label lblUrl;
+        private System.Windows.Forms.Label lblFrequency;
+        private System.Windows.Forms.Label lblCategory;
     }
 }
 
