@@ -1,8 +1,8 @@
-﻿// using System;
+﻿using Podcast2.Interface;
 
 namespace Podcast2.Business
 {
-    public class Podcast
+    public class Podcast : IPodcast
     {
         public string Url { get; set; }
         public int Episodes { get; set; }

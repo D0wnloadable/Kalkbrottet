@@ -38,6 +38,7 @@
             this.cbFrequency = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.lvCategory = new System.Windows.Forms.ListView();
+            this.colCategories = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbNewCat = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSaveCat = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.btnDeletePod = new System.Windows.Forms.Button();
             this.tbEpDescription = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
-            this.colCategories = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnUpdatePod = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -117,16 +117,16 @@
             "60"});
             this.cbFrequency.Location = new System.Drawing.Point(181, 241);
             this.cbFrequency.Name = "cbFrequency";
-            this.cbFrequency.Size = new System.Drawing.Size(132, 21);
+            this.cbFrequency.Size = new System.Drawing.Size(122, 21);
             this.cbFrequency.TabIndex = 6;
             // 
             // cbCategory
             // 
             this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(319, 241);
+            this.cbCategory.Location = new System.Drawing.Point(309, 241);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(113, 21);
+            this.cbCategory.Size = new System.Drawing.Size(123, 21);
             this.cbCategory.TabIndex = 7;
             // 
             // lvCategory
@@ -140,6 +140,11 @@
             this.lvCategory.TabIndex = 8;
             this.lvCategory.UseCompatibleStateImageBehavior = false;
             this.lvCategory.View = System.Windows.Forms.View.Details;
+            // 
+            // colCategories
+            // 
+            this.colCategories.Text = "Kategori";
+            this.colCategories.Width = 325;
             // 
             // tbNewCat
             // 
@@ -199,7 +204,7 @@
             // 
             this.btnDeletePod.Location = new System.Drawing.Point(181, 268);
             this.btnDeletePod.Name = "btnDeletePod";
-            this.btnDeletePod.Size = new System.Drawing.Size(132, 23);
+            this.btnDeletePod.Size = new System.Drawing.Size(122, 23);
             this.btnDeletePod.TabIndex = 15;
             this.btnDeletePod.Text = "Radera";
             this.btnDeletePod.UseVisualStyleBackColor = true;
@@ -224,16 +229,11 @@
             this.lblDescription.TabIndex = 18;
             this.lblDescription.Text = "Sammanfattning";
             // 
-            // colCategories
-            // 
-            this.colCategories.Text = "Kategori";
-            this.colCategories.Width = 325;
-            // 
             // btnUpdatePod
             // 
-            this.btnUpdatePod.Location = new System.Drawing.Point(319, 268);
+            this.btnUpdatePod.Location = new System.Drawing.Point(309, 268);
             this.btnUpdatePod.Name = "btnUpdatePod";
-            this.btnUpdatePod.Size = new System.Drawing.Size(113, 23);
+            this.btnUpdatePod.Size = new System.Drawing.Size(123, 23);
             this.btnUpdatePod.TabIndex = 19;
             this.btnUpdatePod.Text = "Uppdatera";
             this.btnUpdatePod.UseVisualStyleBackColor = true;
