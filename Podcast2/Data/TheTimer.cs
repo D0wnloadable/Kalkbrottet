@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Timer = System.Timers.Timer;
-using Podcast2.Business;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using Timer = System.Timers.Timer;
+
+using Podcast2.Business;
 
 namespace Podcast2.Data
 {
@@ -13,14 +10,9 @@ namespace Podcast2.Data
     {
         private static Timer timer;
 
-        public static int CalcInterval(int freq)
-        {
-            int frequency = 1000;
-            frequency = frequency * freq;
 
-            return frequency;
-        }
-
+        
+        // Sets a new timer function
         public static void SetTimer(string url, string title, string category, int frequency)
         {
             int freq = CalcInterval(frequency);
@@ -31,6 +23,9 @@ namespace Podcast2.Data
             timer.Enabled = true;
         }
 
+
+
+        // The timer, NOT DONE!!!
         private static async void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e, string url, string title, string category, int frequency)
         {
             List<Podcast> list = PodcastList.GetPodList();
@@ -52,11 +47,11 @@ namespace Podcast2.Data
                 timer.Enabled = false;
             }
 
-            if (NumberOfEpisodes >= OldNumberOfEpisodes)
+            if (NumberOfEpisodes > OldNumberOfEpisodes)
             {
                 PodcastList.DeletePod(title);
-                PodcastEpList.DeleteEpisodes(title);
-                RssReaderBusi.AddPodcast(url, category, frequency);
+                EpisodeList.DeleteEpisodes(title);
+                DataLayerAccessor.AddPodcast(url, category, frequency);
                 CreateFile.CreatePodcastFile();
                 CreateFile.CreateEpisodeFile();
 
@@ -70,6 +65,17 @@ namespace Podcast2.Data
             }
 
             PodExists = false;
+        }
+
+
+
+        // Calculates the interval based on the frequency the user inputs
+        public static int CalcInterval(int freq)
+        {
+            int frequency = 60000;
+            frequency = frequency * freq;
+
+            return frequency;
         }
     }
 }

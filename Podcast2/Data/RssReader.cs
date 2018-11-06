@@ -1,11 +1,9 @@
-﻿using Podcast2.Business;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Threading.Tasks;
 using System.ServiceModel.Syndication;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Xml;
+
+using Podcast2.Business;
 
 namespace Podcast2.Data
 {
@@ -32,8 +30,8 @@ namespace Podcast2.Data
                 string title = item.Title.Text;
                 string description = item.Summary.Text;
 
-                PodcastEp episode = new PodcastEp(podTitle, title, description);
-                PodcastEpList.AddEpisode(episode);
+                Episode episode = new Episode(podTitle, title, description);
+                EpisodeList.AddEpisode(episode);
             }
 
             TheTimer.SetTimer(url, podTitle, cat, freq);
@@ -41,6 +39,7 @@ namespace Podcast2.Data
 
 
 
+        // Gets the number of episodes in a rss feed to compare to the local number of episodes
         public static async Task<int> GetNumberOfEpisodes(string url)
         {
             using (XmlReader reader = XmlReader.Create(url))

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Podcast2.Data;
 
 namespace Podcast2.Business
@@ -13,6 +11,7 @@ namespace Podcast2.Business
 
 
 
+        // Contructor
         public PodcastList()
         {
             PodList = new List<Podcast>();
@@ -20,6 +19,7 @@ namespace Podcast2.Business
 
 
 
+        // Adds a podcast to the PodList
         public static void AddPodcast(Podcast pod)
         {
             PodList.Add(pod);
@@ -27,6 +27,7 @@ namespace Podcast2.Business
 
 
 
+        // Returns the PodList
         public static List<Podcast> GetPodList()
         {
             PodList.Reverse();
@@ -36,6 +37,7 @@ namespace Podcast2.Business
 
 
 
+        // Deleted a specific podcast
         public static void DeletePod(string title)
         {
             for (int i = 0; i < PodList.Count(); i++)
@@ -45,8 +47,6 @@ namespace Podcast2.Business
                     PodList.RemoveAt(i);
                 }
             }
-
-            CreateFile.CreatePodcastFile();
         }
     }
 }

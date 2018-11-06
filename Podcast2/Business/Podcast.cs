@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// using System;
 
 namespace Podcast2.Business
 {
@@ -16,19 +12,21 @@ namespace Podcast2.Business
 
 
 
+        // Empty constructor
         public Podcast()
         {
         }
 
 
 
-        public Podcast(string url, int ep, string tit, string cat, int freq)
+        // Constructor
+        public Podcast(string url, int episodes, string title, string category, int frequency)
         {
             Url = url;
-            Episodes = ep;
-            Title = tit;
-            Category = cat;
-            Frequency = freq;
+            Episodes = episodes;
+            Title = title;
+            Category = category;
+            Frequency = frequency;
         }
     }
 }

@@ -44,9 +44,11 @@
             this.btnDeleteCat = new System.Windows.Forms.Button();
             this.lvEpisodes = new System.Windows.Forms.ListView();
             this.colTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvDescription = new System.Windows.Forms.ListView();
             this.btnDeletePod = new System.Windows.Forms.Button();
             this.tbEpDescription = new System.Windows.Forms.TextBox();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.colCategories = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnUpdatePod = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbUrl
@@ -129,12 +131,15 @@
             // 
             // lvCategory
             // 
+            this.lvCategory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colCategories});
+            this.lvCategory.FullRowSelect = true;
             this.lvCategory.Location = new System.Drawing.Point(464, 13);
             this.lvCategory.Name = "lvCategory";
             this.lvCategory.Size = new System.Drawing.Size(329, 222);
             this.lvCategory.TabIndex = 8;
             this.lvCategory.UseCompatibleStateImageBehavior = false;
-            this.lvCategory.View = System.Windows.Forms.View.List;
+            this.lvCategory.View = System.Windows.Forms.View.Details;
             // 
             // tbNewCat
             // 
@@ -148,7 +153,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Location = new System.Drawing.Point(447, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(2, 315);
+            this.label1.Size = new System.Drawing.Size(2, 535);
             this.label1.TabIndex = 10;
             // 
             // btnSaveCat
@@ -190,15 +195,6 @@
             this.colTitle.Text = "Avsnitt";
             this.colTitle.Width = 416;
             // 
-            // lvDescription
-            // 
-            this.lvDescription.Location = new System.Drawing.Point(12, 568);
-            this.lvDescription.Name = "lvDescription";
-            this.lvDescription.Size = new System.Drawing.Size(329, 223);
-            this.lvDescription.TabIndex = 14;
-            this.lvDescription.UseCompatibleStateImageBehavior = false;
-            this.lvDescription.View = System.Windows.Forms.View.List;
-            // 
             // btnDeletePod
             // 
             this.btnDeletePod.Location = new System.Drawing.Point(181, 268);
@@ -211,21 +207,47 @@
             // 
             // tbEpDescription
             // 
-            this.tbEpDescription.Location = new System.Drawing.Point(464, 327);
+            this.tbEpDescription.Location = new System.Drawing.Point(464, 343);
             this.tbEpDescription.Multiline = true;
             this.tbEpDescription.Name = "tbEpDescription";
+            this.tbEpDescription.ReadOnly = true;
             this.tbEpDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbEpDescription.Size = new System.Drawing.Size(329, 223);
+            this.tbEpDescription.Size = new System.Drawing.Size(329, 207);
             this.tbEpDescription.TabIndex = 17;
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(464, 327);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(83, 13);
+            this.lblDescription.TabIndex = 18;
+            this.lblDescription.Text = "Sammanfattning";
+            // 
+            // colCategories
+            // 
+            this.colCategories.Text = "Kategori";
+            this.colCategories.Width = 325;
+            // 
+            // btnUpdatePod
+            // 
+            this.btnUpdatePod.Location = new System.Drawing.Point(319, 268);
+            this.btnUpdatePod.Name = "btnUpdatePod";
+            this.btnUpdatePod.Size = new System.Drawing.Size(113, 23);
+            this.btnUpdatePod.TabIndex = 19;
+            this.btnUpdatePod.Text = "Uppdatera";
+            this.btnUpdatePod.UseVisualStyleBackColor = true;
+            this.btnUpdatePod.Click += new System.EventHandler(this.btnUpdatePod_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 803);
+            this.ClientSize = new System.Drawing.Size(805, 562);
+            this.Controls.Add(this.btnUpdatePod);
+            this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.tbEpDescription);
             this.Controls.Add(this.btnDeletePod);
-            this.Controls.Add(this.lvDescription);
             this.Controls.Add(this.lvEpisodes);
             this.Controls.Add(this.btnDeleteCat);
             this.Controls.Add(this.btnSaveCat);
@@ -260,11 +282,13 @@
         private System.Windows.Forms.Button btnSaveCat;
         private System.Windows.Forms.Button btnDeleteCat;
         private System.Windows.Forms.ListView lvEpisodes;
-        private System.Windows.Forms.ListView lvDescription;
         private System.Windows.Forms.Button btnDeletePod;
         private System.Windows.Forms.ColumnHeader colTitle;
         private System.Windows.Forms.TextBox tbEpDescription;
         public System.Windows.Forms.ComboBox cbFrequency;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.ColumnHeader colCategories;
+        private System.Windows.Forms.Button btnUpdatePod;
     }
 }
 

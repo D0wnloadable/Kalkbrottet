@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Linq;
+
 using Podcast2.Business;
-using Podcast2.Data;
 
 namespace Podcast2
 {
@@ -27,12 +20,10 @@ namespace Podcast2
         private void Form1_Load(object sender, EventArgs e)
         {
             new PodcastList();
-            new PodcastEpList();
+            new EpisodeList();
             new CategoryList();
 
-            GetFileData.GetPodcastList();
-            GetFileData.GetEpisodeList();
-            GetFileData.GetCategoryList();
+            DataLayerAccessor.LoadFileData();
 
             UpdatePodListView();
             UpdateCategoryListView();
@@ -47,13 +38,14 @@ namespace Podcast2
             string category = cbCategory.Text;
             var stringFrequency = cbFrequency.SelectedItem;
 
-            if (Validator.StringNotEmpty(category) && Validator.ParseFrequency(stringFrequency))
+            if (Validator.StringNotEmpty(category) &&
+                Validator.ParseFrequency(stringFrequency) &&
+                Validator.PodcastAlreadyExist(url))
             {
                 int frequency = Int32.Parse(stringFrequency.ToString());
 
-                RssReaderBusi.AddPodcast(url, category, frequency);
-                CreateFile.CreatePodcastFile();
-                CreateFile.CreateEpisodeFile();
+                DataLayerAccessor.AddPodcast(url, category, frequency);
+                DataLayerAccessor.CreateFiles();
 
                 UpdatePodListView();
             }
@@ -64,15 +56,24 @@ namespace Podcast2
         // Button to delete a podcast
         private void btnDeletePod_Click(object sender, EventArgs e)
         {
-            string title = lvPods.SelectedItems[0].SubItems[1].Text;
-
-            if (Validator.StringNotEmpty(title))
+            try
             {
-                PodcastList.DeletePod(title);
-                PodcastEpList.DeleteEpisodes(title);
+                string title = lvPods.SelectedItems[0].SubItems[1].Text;
 
-                UpdatePodListView();
-                lvEpisodes.Items.Clear();
+                if (Validator.StringNotEmpty(title))
+                {
+                    PodcastList.DeletePod(title);
+                    EpisodeList.DeleteEpisodes(title);
+                    DataLayerAccessor.CreateFiles();
+
+                    UpdatePodListView();
+                    lvEpisodes.Items.Clear();
+                    tbEpDescription.Clear();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ingen podcast är vald.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -101,12 +102,13 @@ namespace Podcast2
 
 
 
-        // When clicking a Podcast on the "lvPods" element, the episode list view should update
+        // When clicking a Podcast on the "lvPods" element, the episode list view and form elements should update
         private void lvPods_Click(object sender, EventArgs e)
         {
             string title = lvPods.SelectedItems[0].SubItems[1].Text;
 
             UpdateEpisodeListView(title);
+            SetFormElements(title);
         }
 
 
@@ -116,7 +118,7 @@ namespace Podcast2
         {
             lvEpisodes.Items.Clear();
 
-            List<PodcastEp> epList = PodcastEpList.GetEpList();
+            List<Episode> epList = EpisodeList.GetEpList();
 
             foreach (var ep in epList)
             {
@@ -129,6 +131,61 @@ namespace Podcast2
 
                     lvEpisodes.Items.Add(list);
                 }
+            }
+        }
+
+
+
+        // Updates the data in the form elements
+        public void SetFormElements(string title)
+        {
+            List<Podcast> podList = PodcastList.GetPodList();
+
+            for (int i = 0; i < podList.Count(); i++)
+            {
+                if (podList.ElementAt(i).Title == title)
+                {
+                    tbUrl.Text = podList.ElementAt(i).Url;
+                    cbFrequency.SelectedIndex = cbFrequency.Items.IndexOf(podList.ElementAt(i).Frequency.ToString());
+                    cbCategory.SelectedIndex = cbCategory.Items.IndexOf(podList.ElementAt(i).Category);
+                }
+            }
+        }
+
+
+
+        // Updates the data of a specific podcast
+        private void btnUpdatePod_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string title = lvPods.SelectedItems[0].SubItems[1].Text;
+
+                string url = tbUrl.Text;
+                string category = cbCategory.Text;
+                var stringFrequency = cbFrequency.SelectedItem;
+
+                if (Validator.StringNotEmpty(title) &&
+                    Validator.StringNotEmpty(category) &&
+                    Validator.ParseFrequency(stringFrequency))
+                {
+                    int frequency = Int32.Parse(stringFrequency.ToString());
+
+                    PodcastList.DeletePod(title);
+                    EpisodeList.DeleteEpisodes(title);
+
+                    DataLayerAccessor.AddPodcast(url, category, frequency);
+                    DataLayerAccessor.CreateFiles();
+                    
+                    UpdatePodListView();
+                    lvEpisodes.Items.Clear();
+                    tbEpDescription.Clear();
+                    MessageBox.Show("Podcasten uppdaterades!", "Wohoo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ingen podcast är vald.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -149,9 +206,9 @@ namespace Podcast2
         {
             string description = "";
 
-            List<PodcastEp> list = PodcastEpList.GetEpList();
+            List<Episode> list = EpisodeList.GetEpList();
 
-            foreach (PodcastEp ep in list)
+            foreach (Episode ep in list)
             {
                 if (ep.Title == title)
                 {
@@ -187,7 +244,6 @@ namespace Podcast2
         // Button to delete a Category
         private void btnDeleteCat_Click(object sender, EventArgs e)
         {
-            // var item = lvCategory.SelectedItems[0].Text; if(Validator.checkSomething(item))
             try
             {
                 var item = lvCategory.SelectedItems[0].Text;
@@ -218,11 +274,14 @@ namespace Podcast2
 
             foreach (string cat in catList)
             {
-                lvCategory.Items.Add(cat);
+                var list = new ListViewItem(new[]
+                {
+                    cat
+                });
+
+                lvCategory.Items.Add(list);
                 cbCategory.Items.Add(cat);
             }
-            
-            //lvCategory.Items.Add(cat);
         }
     }
 }

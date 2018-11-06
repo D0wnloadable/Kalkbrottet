@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Podcast2.Data;
 
 namespace Podcast2.Business
@@ -13,6 +11,7 @@ namespace Podcast2.Business
 
 
 
+        // Constructor
         public CategoryList()
         {
             CatList = new List<string>();
@@ -20,6 +19,7 @@ namespace Podcast2.Business
 
 
 
+        // Adds a category to CatList
         public static void AddCat(string cat)
         {
             CatList.Add(cat);
@@ -27,6 +27,7 @@ namespace Podcast2.Business
 
 
 
+        // Returns the CatList
         public static List<string> GetCatList()
         {
             return CatList;
@@ -34,6 +35,7 @@ namespace Podcast2.Business
 
 
 
+        // Deletes a specific category
         public static void DeleteCat(string cat)
         {
             for (int i = 0; i < CatList.Count; i++)

@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel.Syndication;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using Podcast2;
 
 namespace Podcast2.Business
 {
@@ -25,6 +21,26 @@ namespace Podcast2.Business
             {
                 return true;
             }
+        }
+
+
+
+        public static bool PodcastAlreadyExist(string url)
+        {
+            List<Podcast> podList = PodcastList.GetPodList();
+            bool notFound = true;
+
+            foreach (Podcast pod in podList)
+            {
+                if (url == pod.Url)
+                {
+                    notFound = false;
+
+                    MessageBox.Show("Podcasten finns redan.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            return notFound;
         }
 
 
